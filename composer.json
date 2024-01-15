@@ -1,0 +1,21 @@
+{
+    "name": "adm/cms",
+    "type": "projject",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "shahram",
+            "email": "ardalan.shahram@gmail.com"
+        }
+    ],
+    "require": {
+        "pecee/simple-router": "5.4.1.7",
+        "jenssegers/blade": "^2.0",
+        "illuminate/database": "^10.38",
+        "symfony/password-hasher": "^7.0"
+    }
+}
