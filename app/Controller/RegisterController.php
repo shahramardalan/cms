@@ -7,10 +7,31 @@ use App\Model\User;
 use Symfony\Component\PasswordHasher\Hasher\PasswordHasherFactory;
 
 
-class RegisterController
+class RegisterController extends BaseDashboardController
 {
+    public function formRegister(){
+        if(isset($_SESSION['isLogin'])){
+            return redirect('/dashboard');
+        }
+
+        return view('register');
+    }
     public function createAccount()
     {
+        if(!$_POST['fullName'] || !$_POST['email'] || !$_POST['password']){
+            $_SESSION['error'] = 'please fill form';
+
+            return redirect("/register");
+        }
+
+        $check = User::where('username', '=', $_POST['email'])->first();
+
+        if($check){
+            $_SESSION['error'] = 'this user alrady exist';
+
+            return redirect("/register");
+        }
+
         $factory = new PasswordHasherFactory([
             'common' => ['algorithm' => 'bcrypt'],
             'memory-hard' => ['algorithm' => 'sodium'],
@@ -28,7 +49,9 @@ class RegisterController
         $user->password = $hash;
 
         $user->save();
+
+        $_SESSION['success'] = 'Welcome ' . $_POST['fullName'];
+
+        return redirect("/register");
     }
 }
-
-// Configure different password hashers via the factory

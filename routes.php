@@ -10,23 +10,38 @@ SimpleRouter::get('/', function() {
     return 'Hello world';
 });
 
-SimpleRouter::get('/register', function() {
-    return view('register');
-});
-/* SimpleRouter::post('/register', function() {
-    RegisterController::createAccount();
-}); */
-
+SimpleRouter::get('/register', 'RegisterController@formRegister');
 SimpleRouter::post('/register', 'RegisterController@createAccount');
 
 SimpleRouter::get('/pages/create', function() {
     return view('pages.create');
 });
-SimpleRouter::post('/pages/create', 'PageController@createPage');
+
+SimpleRouter::get('/login', 'Logincontroller@formLogin');
+SimpleRouter::post('/login', 'LoginController@submit');
+
+SimpleRouter::get('/dashboard', 'DashboardController@show');
+
+SimpleRouter::get('/dashboard/pages', 'PageController@show');
+
+SimpleRouter::get('/dashboard/pages/create', 'PageController@create');
+SimpleRouter::post('/dashboard/pages/create', 'PageController@storeCreate');
+SimpleRouter::get('/dashboard/pages/{id}/delete', 'PageController@deletePage');
+
+SimpleRouter::get('{slug}', 'PageController@renderPage');
 
 SimpleRouter::get('/pages/about', 'PageController@renderAbout');
 
-SimpleRouter::get('/pages/edit/{id}', 'PageController@edit');
-SimpleRouter::Post('/pages/edit/{id}', 'PageController@update');
+SimpleRouter::get('dashboard/pages/edit/{id}', 'PageController@edit');
+SimpleRouter::Post('dashboard/pages/edit/{id}', 'PageController@update');
 
-SimpleRouter::get('/pages/delete/{id}', 'PageController@deletePage');
+//------ Dashboard Menu -------
+SimpleRouter::get('/dashboard/menus', 'MenuController@show');
+SimpleRouter::get('/dashboard/menus/create', 'MenuController@create');
+SimpleRouter::post('/dashboard/menus/create', 'MenuController@storeCreate');
+
+
+SimpleRouter::get('/test', 'MenuController@show');
+
+SimpleRouter::get('/menu', 'PageController@show');
+

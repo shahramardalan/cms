@@ -4,10 +4,10 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Page extends Model{
+class Menu extends Model{
     protected $guarded = ['id'];
 
-    public function menus(){
-        return $this->hasMany(Menu::class);
+    public function page(){
+        return $this->BelongsTo(Page::class);
     }
 }
