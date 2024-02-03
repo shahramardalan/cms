@@ -40,12 +40,12 @@
                     <td class="px-6 py-4">
                         {{$blog->created_at}}
                     </td>
-                    <!-- <td class="px-6 py-4">
+                    <td class="px-6 py-4">
                         <a href="/dashboard/blogs/edit/{{$blog->id}}"
                             class="font-medium text-blue-600 dark:text-blue-500 hover:underline">edit</a>
-                        <a href="/dashboard/blogs/{{$blogs->id}}/delete"
+                        <a href="/dashboard/blogs/{{$blog->id}}/delete"
                             class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</a>
-                    </td> -->
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

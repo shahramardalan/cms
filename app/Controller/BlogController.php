@@ -10,6 +10,10 @@ class BlogController extends BaseDashboardController
   {
     $blogs = Blog::all();
 
+    /* print_r($blogs->toArray());
+
+    die(); */
+
     return view('blogs.list', ['blogs' => $blogs]);
   }
 

@@ -28,7 +28,7 @@ SimpleRouter::get('/dashboard/pages/create', 'PageController@create');
 SimpleRouter::post('/dashboard/pages/create', 'PageController@storeCreate');
 SimpleRouter::get('/dashboard/pages/{id}/delete', 'PageController@deletePage');
 
-SimpleRouter::get('{slug}', 'PageController@renderPage');
+
 
 SimpleRouter::get('/pages/about', 'PageController@renderAbout');
 
@@ -48,5 +48,7 @@ SimpleRouter::post('/dashboard/blogs/create', 'BlogController@storeCreate');
 SimpleRouter::get('/test', 'MenuController@show');
 
 SimpleRouter::get('/menu', 'PageController@show');
+
+SimpleRouter::get('{slug}', 'PageController@renderPage');
 
 
