@@ -45,6 +45,8 @@
                             class="font-medium text-blue-600 dark:text-blue-500 hover:underline">edit</a>
                         <a href="/dashboard/blogs/{{$blog->id}}/delete"
                             class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</a>
+                        <a href="/dashboard/blogs/{{$blog->id}}/viewContent"
+                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">view blog</a>
                     </td>
                 </tr>
                 @endforeach

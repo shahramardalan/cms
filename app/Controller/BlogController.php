@@ -17,6 +17,32 @@ class BlogController extends BaseDashboardController
     return view('blogs.list', ['blogs' => $blogs]);
   }
 
+  public function deleteBlog($id)
+  {
+    $blog = blog::find($id);
+    $blog->delete();
+
+    $_SESSION['success'] = 'blog deleted!';
+
+    return redirect("/dashboard/blogs");
+  }
+  public function edit($id)
+  {
+    $blog = blog::find($id);
+    if (!$blog) {
+      redirect('/dashboard/blogs');
+    }
+    return view('blogs.edit', ['content' => $blog]);
+  }
+
+  public function viewContent($id)
+  {
+    $blog = blog::find($id);
+    if (!$blog) {
+      redirect('/dashboard/blogs');
+    }
+    return view('blogs.viewContent', ['blog' => $blog]);
+  }
 
   public function create()
   {
